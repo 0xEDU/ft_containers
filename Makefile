@@ -1,4 +1,3 @@
-VECTORS = vectors
 STL_VECTOR_NAME = stl_vector
 
 PATH_VECTOR = ./sources/vector/
@@ -12,11 +11,9 @@ VECTOR_OBJS = $(patsubst %.cpp,$(PATH_OBJS)%.o,$(VECTOR_TESTS))
 INCLUDE = -I $(PATH_CONTAINERS)
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-tests: vector
+tests: $(STL_VECTOR_NAME)
 
-vector: $(VECTORS)
-
-$(VECTORS): $(VECTOR_OBJS)
+$(STL_VECTOR_NAME): $(VECTOR_OBJS)
 	@c++ $(FLAGS) $(VECTOR_OBJS) -o $(STL_VECTOR_NAME)
 
 $(PATH_OBJS)%.o: $(PATH_VECTOR)%.cpp
