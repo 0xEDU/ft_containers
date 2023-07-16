@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_stl.cpp                                       :+:      :+:    :+:   */
+/*   main_ft.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: etachott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 02:42:23 by edu               #+#    #+#             */
-/*   Updated: 2023/07/15 22:06:08 by etachott         ###   ########.fr       */
+/*   Created: 2023/07/15 22:10:54 by etachott          #+#    #+#             */
+/*   Updated: 2023/07/15 22:11:24 by etachott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
-#include <vector>
 
 #include "vector.hpp"
 
 int main(void) {
-	std::cout << "Hello, Containers!" << std::endl;
+	ft::vector<int> v;
+
 	return (0);
 }
