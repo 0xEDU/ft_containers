@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ft.cpp                                        :+:      :+:    :+:   */
+/*   main_vectors.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etachott <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: edu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 22:10:54 by etachott          #+#    #+#             */
-/*   Updated: 2023/07/15 22:11:24 by etachott         ###   ########.fr       */
+/*   Created: 2023/07/16 00:02:15 by edu               #+#    #+#             */
+/*   Updated: 2023/07/16 00:03:50 by edu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.hpp"
+#include <vector>
 
 int main(void) {
-	ft::vector<int> v;
+	std::vector<int> sv;
+	ft::vector<int> fv;
 
-	return (0);
+	return 0;
 }
