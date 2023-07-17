@@ -6,7 +6,7 @@
 /*   By: edu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 02:42:15 by edu               #+#    #+#             */
-/*   Updated: 2023/07/16 01:52:17 by edu              ###   ########.fr       */
+/*   Updated: 2023/07/17 00:16:26 by edu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ namespace ft {
 template <
 	typename T,
 	class Allocator = std::allocator<T>
-> class vector {
-	// Member Types ===========================================================/
+>
+class vector {
+public:
 	typedef T value_type;
 	typedef Allocator allocator_type;
 	typedef std::size_t size_type;
@@ -29,9 +30,12 @@ template <
 	typedef const value_type& const_reference;
 	typedef typename Allocator::pointer pointer;
 	typedef const typename Allocator::const_pointer const_pointer;
+	// iterator
+	// const_iterator
+	// reverse_iterator
+	// const_reverse_iterator
 
-
-	public:
+public:
 
 	vector() {
 		return ;
