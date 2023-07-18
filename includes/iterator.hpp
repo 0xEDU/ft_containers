@@ -6,14 +6,13 @@
 /*   By: edu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 00:19:09 by edu               #+#    #+#             */
-/*   Updated: 2023/07/17 01:18:32 by edu              ###   ########.fr       */
+/*   Updated: 2023/07/18 19:12:01 by etachott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITERATOR_HPP
 #define ITERATOR_HPP
 
-#include <cstddef>
 #include <iterator>
 
 namespace ft {
@@ -26,6 +25,7 @@ typedef std::forward_iterator_tag forward_iterator_tag;
 typedef std::bidirectional_iterator_tag bidirectional_iterator_tag;
 typedef std::random_access_iterator_tag random_access_iterator_tag;
 
+// Iterator traits
 template <class Iter>
 struct iterator_traits {
 	typedef typename Iter::difference_type		difference_type;
@@ -51,6 +51,22 @@ struct iterator_traits<const T*> {
 	typedef const T*					pointer;
 	typedef const T&					reference;
 	typedef random_access_iterator_tag	iterator_category;
+};
+
+// Iterator
+template <
+	class Category,
+	class T,
+	class Distance = ptrdiff_t,
+	class Pointer = T*,
+	class Reference = T&
+>
+struct iterator {
+	typedef T			value_type;
+	typedef Distance	difference_type;
+	typedef Pointer		pointer;
+	typedef Reference	reference;
+	typedef Category	iterator_category;
 };
 
 }
