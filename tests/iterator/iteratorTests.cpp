@@ -6,7 +6,7 @@
 /*   By: etachott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:32:37 by etachott          #+#    #+#             */
-/*   Updated: 2023/07/18 18:38:42 by etachott         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:39:13 by etachott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 #include "testUtils.hpp"
 
 int main(void) {
-	assert(1, 1, "tests");
 	return (0);
 }
