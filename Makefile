@@ -31,7 +31,7 @@ $(VECTOR_NAME): $(VECTOR_OBJS)
 $(PATH_OBJS)%.o: $(PATH_VECTOR)%.cpp
 	@mkdir -p $(PATH_OBJS)
 	@c++ $(FLAGS) $(INCLUDE_CONTAINERS) $(INCLUDE_TESTS) -c $< -o $@
-	@echo "\033[1;92m[SUCCESS] Vector object creation done!\033[0m"
+	@echo "\033[1;92m[SUCCESS] Vector test objects creation done!\033[0m"
 
 $(ITERATOR_NAME): $(ITERATOR_OBJS)
 	@c++ $(FLAGS) $(ITERATOR_OBJS) -o $(ITERATOR_NAME)
@@ -39,14 +39,14 @@ $(ITERATOR_NAME): $(ITERATOR_OBJS)
 $(PATH_OBJS)%.o: $(PATH_ITERATOR)%.cpp
 	@mkdir -p $(PATH_OBJS)
 	@c++ $(FLAGS) $(INCLUDE_CONTAINERS) $(INCLUDE_TESTS) -c $< -o $@
-	@echo "\033[1;92m[SUCCESS] Vector object creation done!\033[0m"
+	@echo "\033[1;92m[SUCCESS] Iterator test objects creation done!\033[0m"
 
 clean:
 	@rm -rf $(PATH_OBJS)
 	@echo "\33[1;93m[SUCCESS] Objects removed!\33[0m"
 
 fclean: clean
-	@rm -f $(VECTOR_NAME)
+	@rm -f $(VECTOR_NAME) $(ITERATOR_NAME)
 	@echo "\033[1;93m[SUCCESS] Full clean done!\33[0m"
 
 re: fclean tests
