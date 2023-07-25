@@ -17,7 +17,7 @@ INCLUDE_CONTAINERS = -I $(PATH_CONTAINERS)
 INCLUDE_TESTS = -I $(PATH_TESTS)
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-tests: $(VECTOR_NAME) $(ITERATOR_NAME)
+all: $(VECTOR_NAME) $(ITERATOR_NAME)
 
 vector-run: $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
