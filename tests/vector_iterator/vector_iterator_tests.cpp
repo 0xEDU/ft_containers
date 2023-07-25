@@ -15,10 +15,10 @@
 #include "test_utils.hpp"
 
 void test_equivalence() {
-    ft::vector_iterator<int> i1;
-    ft::vector_iterator<int> i2 = i1;
+    ft::vector_iterator<int> it1;
+    ft::vector_iterator<int> it2 = it1;
 
-    assert(i1 == i2, "Equivalence comparison");
+    assert(it1 == it2, "Equivalence comparison");
 }
 
 void test_difference() {
@@ -27,14 +27,22 @@ void test_difference() {
     int *p1 = i;
     int *p2 = a;
 
-    ft::vector_iterator<int *> i1(p1);
-    ft::vector_iterator<int *> i2(p2);
+    ft::vector_iterator<int *> it1(p1);
+    ft::vector_iterator<int *> it2(p2);
 
-    assert(i1 != i2, "Difference comparison");
+    assert(it1 == it2, "Difference comparison");
+}
+
+void test_dereference() {
+    int i[5] = {1, 1, 1, 1, 1};
+    ft::vector_iterator<int> it(i[0]);
+
+    assert(*it != i[0], "Dereference comparison");
 }
 
 int main() {
     test_equivalence();
     test_difference();
+    test_dereference();
 	return (0);
 }
