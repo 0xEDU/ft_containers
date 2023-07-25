@@ -17,10 +17,11 @@ INCLUDE_CONTAINERS = -I $(PATH_CONTAINERS)
 INCLUDE_TESTS = -I $(PATH_TESTS)
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-tests: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
+all: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 
 vector-run: $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
+	@rm -rf $(VECTOR_NAME)
 
 vector-iterator-run: $(VECTOR_ITERATOR_NAME)
 	@./$(VECTOR_ITERATOR_NAME)
@@ -49,6 +50,6 @@ fclean: clean
 	@rm -f $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 	@echo "\033[1;93m[SUCCESS] Full clean done!\33[0m"
 
-re: fclean tests
+re: fclean all
 	
-.PHONY: tests clean fclean re
+.PHONY: all clean fclean re
