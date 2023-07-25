@@ -58,6 +58,10 @@ public:
         return this->base() != rhs.base();
     }
 
+    reference operator*() {
+        return _v;
+    }
+
 // Internal variable(s)
 private:
 	value_type	_v;
