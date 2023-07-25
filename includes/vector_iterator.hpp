@@ -34,11 +34,10 @@ public:
 // Canonical form
 public:
 	vector_iterator() : _v() {};
-	vector_iterator(const value_type &value) : _v(value) {};
+	explicit vector_iterator(value_type &value) : _v(value) {};
 	vector_iterator(const vector_iterator &rhs) {
 		if (this != &rhs)
 			*this = rhs;
-		return ;
 	};
 	vector_iterator &operator=(const vector_iterator &rhs) {
 		if (this != &rhs)
@@ -48,18 +47,21 @@ public:
 	~vector_iterator() {};
 
 	// Accessor
-	const value_type &base(void) const { return this->_v; };
+	const value_type &base() const { return this->_v; };
 
-// Interal variable(s)
+    // Overloads
+    bool operator==(const vector_iterator<T> &rhs) {
+        return this->base() == rhs.base();
+    }
+
+    bool operator!=(const vector_iterator<T> &rhs) {
+        return this->base() != rhs.base();
+    }
+
+// Internal variable(s)
 private:
 	value_type	_v;
 };
-
-// Overloads
-template <typename T>
-bool operator==(const vector_iterator<T> &lhs, const vector_iterator<T> &rhs) {
-	return lhs.base() == rhs.base();
-}
 
 }
 
