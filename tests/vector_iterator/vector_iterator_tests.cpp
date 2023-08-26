@@ -35,8 +35,21 @@ TEST_F(dereference) {
     assert(*it == i[0], "Dereference comparison");
 }
 
+TEST_F(increments) {
+    // given:
+    int i[5] = {1, 2, 3, 4, 5};
+    ft::vector_iterator<int> it(i[0]);
+
+    // then:
+    ++it;
+    assert(*it == i[1], "Dereference comparison (pre-increment)");
+    it++;
+    assert(*it == i[1], "Dereference comparison (post-increment)");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
     RUN_TEST(dereference);
+    RUN_TEST(increments);
 }
