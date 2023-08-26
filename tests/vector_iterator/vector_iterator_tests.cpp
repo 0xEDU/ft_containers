@@ -60,18 +60,19 @@ TEST_F(dereferenceAndIncrement) {
 // memberAccess test type
 typedef struct data {
     int x;
-    int y;
 } data_t;
 
 TEST_F(memberAccess) {
     // given:
-    data d[2] = {{.x = 1, .y = 2}, {.x = 3, .y = 4}};
+    data d[3] = {{.x = 1}, {.x = 2}, {.x = 3}};
     ft::vector_iterator<data_t> it(d[0]);
 
     // then:
     assert(it->x == d[0].x, "Member access");
+    ++it;
+    assert(it->x == d[1].x, "Member access after prefix increment");
     it++;
-    assert(it->x == d[1].x, "Member access after increment");
+    assert(it->x == d[2].x, "Member access after postfix increment");
 }
 
 TEST_SUITE {
