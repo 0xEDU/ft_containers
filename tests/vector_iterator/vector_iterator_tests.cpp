@@ -23,7 +23,7 @@ TEST_F(difference) {
     ft::vector_iterator<int *> it2(p2);
 
     // then:
-    assert(it1 == it2, "Difference comparison");
+    assert(it1 != it2, "Difference comparison");
 }
 
 TEST_F(dereference) {
