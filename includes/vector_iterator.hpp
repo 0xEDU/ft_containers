@@ -76,6 +76,13 @@ public:
 		return tmp;
 	}
 
+	vector_iterator &operator+=(int rhs) {
+		int m = rhs;
+
+		if (m >= 0) while (m--) ++(*this);
+		else while (m++) --(*this);
+		return *this;
+	}
 
 // Internal variable(s)
 private:
