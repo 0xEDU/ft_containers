@@ -1,27 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   iteratorTests.cpp                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: etachott <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 18:32:37 by etachott          #+#    #+#             */
-/*   Updated: 2023/07/19 15:24:07 by etachott         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "iterator.hpp"
 #include "vector_iterator.hpp"
 #include "test_utils.hpp"
 
-void test_equivalence() {
+TEST_F(equivalence) {
     ft::vector_iterator<int> it1;
     ft::vector_iterator<int> it2 = it1;
 
     assert(it1 == it2, "Equivalence comparison");
 }
 
-void test_difference() {
+TEST_F(difference) {
     int i[5] = {1, 1, 1, 1, 1};
     int a[5] = {2, 2, 2, 2, 2};
     int *p1 = i;
@@ -33,7 +21,7 @@ void test_difference() {
     assert(it1 == it2, "Difference comparison");
 }
 
-void test_dereference() {
+TEST_F(dereference) {
     int i[5] = {1, 1, 1, 1, 1};
     ft::vector_iterator<int> it(i[0]);
 
@@ -41,8 +29,8 @@ void test_dereference() {
 }
 
 int main() {
-    test_equivalence();
-    test_difference();
-    test_dereference();
-	return (0);
+    RUN_TEST(equivalence);
+    RUN_TEST(difference);
+    RUN_TEST(dereference);
+    return (0);
 }
