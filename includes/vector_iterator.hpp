@@ -22,7 +22,7 @@ public:
 // Canonical form
 public:
 	vector_iterator() : _v() {};
-	explicit vector_iterator(value_type &value) : _v(value) {};
+	explicit vector_iterator(value_type &value) : _v(&value) {};
 	vector_iterator(const vector_iterator &rhs) {
 		if (this != &rhs)
 			*this = rhs;
@@ -35,7 +35,7 @@ public:
 	~vector_iterator() {};
 
 	// Accessor
-	const value_type &base() const { return this->_v; };
+	pointer base() const { return this->_v; };
 
     // Overloads
     bool operator==(const vector_iterator<T> &rhs) {
@@ -47,12 +47,23 @@ public:
     }
 
     reference operator*() {
-        return _v;
+        return *_v;
     }
+
+	_iterator &operator++() {
+		++_v;
+		return *this;
+	}
+
+	_iterator operator++(int) {
+		_iterator tmp = *this;
+		++_v;
+		return tmp;
+	}
 
 // Internal variable(s)
 private:
-	value_type	_v;
+	pointer	_v;
 };
 
 }
