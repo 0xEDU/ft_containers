@@ -110,6 +110,20 @@ TEST_F(dereferenceAndDecrement) {
     assert(*it == i[3], "Iterator incremented after dereference and postfix");
 }
 
+TEST_F(incrementMultiplePositions) {
+    // given:
+    int i[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    ft::vector_iterator<int> it(i[0]);
+
+    // then:
+    ft::vector_iterator<int> itNew = it + 2;
+    assert(*itNew == i[2], "Sum an integer to iterator");
+    it += 1;
+    assert(*it == i[1], "Increment n positions");
+    ft::vector_iterator<int> itFinal = it + itNew;
+    assert(*itFinal == i[3], "Sum two iterators");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -120,4 +134,5 @@ TEST_SUITE {
     RUN_TEST(assignment);
     RUN_TEST(decrements);
     RUN_TEST(dereferenceAndDecrement);
+    RUN_TEST(incrementMultiplePositions);
 }
