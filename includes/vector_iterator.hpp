@@ -89,11 +89,6 @@ public:
 		return temp += rhs;
 	}
 
-	vector_iterator operator+(vector_iterator rhs) {
-		vector_iterator temp = *this;
-		return temp += rhs;
-	}
-
 // Internal variable(s)
 private:
 	pointer	_v;
