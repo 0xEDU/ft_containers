@@ -88,6 +88,18 @@ TEST_F(assignment) {
     assert((i[0] == 10 && i[1] == 20), "Iterator altered the referenced object");
 }
 
+TEST_F(decrements) {
+    // given:
+    int i[5] = {1, 2, 3, 4, 5};
+    ft::vector_iterator<int> it(i[4]);
+
+    // then:
+    --it;
+    assert(*it == i[1], "Prefix increment");
+    it--;
+    assert(*it == i[2], "Postfix increment");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
