@@ -95,9 +95,19 @@ TEST_F(decrements) {
 
     // then:
     --it;
-    assert(*it == i[1], "Prefix increment");
+    assert(*it == i[3], "Prefix decrement");
     it--;
-    assert(*it == i[2], "Postfix increment");
+    assert(*it == i[2], "Postfix decrement");
+}
+
+TEST_F(dereferenceAndDecrement) {
+    // given:
+    int i[5] = {1, 2, 3, 4, 5};
+    ft::vector_iterator<int> it(i[4]);
+
+    // then:
+    assert(*it-- == i[4], "Dereference and postfix increment");
+    assert(*it == i[3], "Iterator incremented after dereference and postfix");
 }
 
 TEST_SUITE {
@@ -108,4 +118,6 @@ TEST_SUITE {
     RUN_TEST(dereferenceAndIncrement);
     RUN_TEST(memberAccess);
     RUN_TEST(assignment);
+    RUN_TEST(decrements);
+    RUN_TEST(dereferenceAndDecrement);
 }
