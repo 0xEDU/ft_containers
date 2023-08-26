@@ -69,9 +69,9 @@ TEST_F(memberAccess) {
     ft::vector_iterator<data_t> it(d[0]);
 
     // then:
-    assert(it->x == d[0].x, "Dereference and postfix increment");
+    assert(it->x == d[0].x, "Member access");
     it++;
-    assert(it->x == d[1].x, "Iterator incremented after dereference and postfix");
+    assert(it->x == d[1].x, "Member access after increment");
 }
 
 TEST_SUITE {
