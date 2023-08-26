@@ -57,10 +57,28 @@ TEST_F(dereferenceAndIncrement) {
     assert(*it == i[1], "Iterator incremented after dereference and postfix");
 }
 
+// memberAccess test type
+typedef struct data {
+    int x;
+    int y;
+} data_t;
+
+TEST_F(memberAccess) {
+    // given:
+    data d[2] = {{.x = 1, .y = 2}, {.x = 3, .y = 4}};
+    ft::vector_iterator<data_t> it(d[0]);
+
+    // then:
+    assert(it->x == d[0].x, "Dereference and postfix increment");
+    it++;
+    assert(it->x == d[1].x, "Iterator incremented after dereference and postfix");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
     RUN_TEST(dereference);
     RUN_TEST(increments);
     RUN_TEST(dereferenceAndIncrement);
+    RUN_TEST(memberAccess);
 }
