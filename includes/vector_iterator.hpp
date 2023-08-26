@@ -61,6 +61,10 @@ public:
 		return tmp;
 	}
 
+	pointer operator->() {
+		return this->base();
+	}
+
 // Internal variable(s)
 private:
 	pointer	_v;
