@@ -50,6 +50,10 @@ public:
         return *_v;
     }
 
+	pointer operator->() {
+		return this->base();
+	}
+
 	vector_iterator &operator++() {
 		++_v;
 		return *this;
@@ -61,9 +65,17 @@ public:
 		return tmp;
 	}
 
-	pointer operator->() {
-		return this->base();
+	vector_iterator &operator--() {
+		--_v;
+		return *this;
 	}
+
+	vector_iterator operator--(int) {
+		vector_iterator tmp = *this;
+		--(*this);
+		return tmp;
+	}
+
 
 // Internal variable(s)
 private:
