@@ -9,6 +9,7 @@
 
 #define TEST_F(functionName) void functionName##_test(void)
 #define RUN_TEST(testName) testName##_test();
+#define TEST_SUITE int main()
 
 template <typename T>
 void assert(const T &lhs, const T &rhs, const char *testName) {

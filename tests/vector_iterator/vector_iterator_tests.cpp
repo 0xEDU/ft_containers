@@ -28,9 +28,8 @@ TEST_F(dereference) {
     assert(*it != i[0], "Dereference comparison");
 }
 
-int main() {
+TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
     RUN_TEST(dereference);
-    return (0);
 }
