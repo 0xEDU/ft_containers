@@ -28,11 +28,11 @@ TEST_F(difference) {
 
 TEST_F(dereference) {
     // given:
-    int i[5] = {1, 1, 1, 1, 1};
+    int i[5] = {1, 2, 3, 4, 5};
     ft::vector_iterator<int> it(i[0]);
 
     // then:
-    assert(*it != i[0], "Dereference comparison");
+    assert(*it == i[0], "Dereference comparison");
 }
 
 TEST_SUITE {
