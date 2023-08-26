@@ -46,18 +46,18 @@ public:
         return this->base() != rhs.base();
     }
 
-    reference operator*() {
+    reference operator*() const {
         return *_v;
     }
 
-	_iterator &operator++() {
+	vector_iterator &operator++() {
 		++_v;
 		return *this;
 	}
 
-	_iterator operator++(int) {
-		_iterator tmp = *this;
-		++_v;
+	vector_iterator operator++(int) {
+		vector_iterator tmp = *this;
+		++(*this);
 		return tmp;
 	}
 
