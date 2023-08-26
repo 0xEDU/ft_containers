@@ -116,12 +116,11 @@ TEST_F(incrementMultiplePositions) {
     ft::vector_iterator<int> it(i[0]);
 
     // then:
-    ft::vector_iterator<int> itNew = it + 2;
+    ft::vector_iterator<int> itNew = 1 + it;
+    itNew = it + 2;
     assert(*itNew == i[2], "Sum an integer to iterator");
     it += 1;
     assert(*it == i[1], "Increment n positions");
-    ft::vector_iterator<int> itFinal = it + itNew;
-    assert(*itFinal == i[3], "Sum two iterators");
 }
 
 TEST_SUITE {
