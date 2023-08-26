@@ -42,9 +42,9 @@ TEST_F(increments) {
 
     // then:
     ++it;
-    assert(*it == i[1], "Dereference comparison (pre-increment)");
+    assert(*it == i[1], "Dereference comparison (prefix)");
     it++;
-    assert(*it == i[1], "Dereference comparison (post-increment)");
+    assert(*it == i[2], "Dereference comparison (postfix)");
 }
 
 TEST_SUITE {
