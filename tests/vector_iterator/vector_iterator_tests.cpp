@@ -75,6 +75,19 @@ TEST_F(memberAccess) {
     assert(it->x == d[2].x, "Member access after postfix increment");
 }
 
+TEST_F(assignment) {
+    // given:
+    int i[5] = {1, 2, 3, 4, 5};
+    ft::vector_iterator<int> it(i[0]);
+
+    // then:
+    *it = 10;
+    assert(*it++ == 10, "Assign a value to a iterator with deref and increment");
+    *it = 20;
+    assert(*it == 20, "Assign a value to a iterator");
+    assert((i[0] == 10 && i[1] == 20), "Iterator altered the referenced object");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -82,4 +95,5 @@ TEST_SUITE {
     RUN_TEST(increments);
     RUN_TEST(dereferenceAndIncrement);
     RUN_TEST(memberAccess);
+    RUN_TEST(assignment);
 }

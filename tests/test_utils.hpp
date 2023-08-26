@@ -8,7 +8,11 @@
 #define END "\033[0m"
 
 #define TEST_F(functionName) void functionName##_test(void)
-#define RUN_TEST(testName) testName##_test();
+#define RUN_TEST(testName) { \
+	std::cout << "==== " << #testName << " ====" << std::endl; \
+	testName##_test(); \
+	std::cout << std::endl; \
+}
 #define TEST_SUITE int main()
 
 template <typename T>
