@@ -123,6 +123,18 @@ TEST_F(incrementMultiplePositions) {
     assert(*it == i[1], "Increment n positions");
 }
 
+TEST_F(decrementMultiplePositions) {
+    // given:
+    int i[5] = {1, 2, 3, 4, 5};
+    ft::vector_iterator<int> it(i[4]);
+
+    // then:
+    it -= 2;
+    assert(*it == i[2], "Decrement n positions");
+    it = it - 2;
+    assert(*it == i[0], "Subtract an integer from iterator");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -134,4 +146,5 @@ TEST_SUITE {
     RUN_TEST(decrements);
     RUN_TEST(dereferenceAndDecrement);
     RUN_TEST(incrementMultiplePositions);
+    RUN_TEST(decrementMultiplePositions);
 }
