@@ -84,9 +84,18 @@ public:
 		return *this;
 	}
 
+	vector_iterator &operator-=(int rhs) {
+		return *this += -rhs;
+	}
+
 	vector_iterator operator+(int rhs) {
 		vector_iterator temp = *this;
 		return temp += rhs;
+	}
+
+	vector_iterator operator-(int rhs) {
+		vector_iterator temp = *this;
+		return temp -= rhs;
 	}
 
 // Internal variable(s)
