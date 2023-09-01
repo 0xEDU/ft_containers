@@ -7,6 +7,8 @@
 #define GRN "\033[1;31m"
 #define END "\033[0m"
 
+#define LOG(x) std::cout << x << std::endl;
+
 #define TEST_F(functionName) void functionName##_test(void)
 #define RUN_TEST(testName) { \
 	std::cout << "==== " << #testName << " ====" << std::endl; \
