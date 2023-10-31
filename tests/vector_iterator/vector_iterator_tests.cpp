@@ -1,6 +1,7 @@
 #include "iterator.hpp"
 #include "vector_iterator.hpp"
 #include "test_utils.hpp"
+#include <cstddef>
 
 TEST_F(equivalence) {
     // given:
@@ -135,6 +136,16 @@ TEST_F(decrementMultiplePositions) {
     assert(*it == i[0], "Subtract an integer from iterator");
 }
 
+TEST_F(randomPositionAccess) {
+    // given:
+    int i[5] = {10, 21, 32, 43, 54};
+    ft::vector_iterator<int> it(i[0]);
+
+    // then:
+    int j = it[3];
+    assert(i[3] == j, "Access a random position using []");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -147,4 +158,5 @@ TEST_SUITE {
     RUN_TEST(dereferenceAndDecrement);
     RUN_TEST(incrementMultiplePositions);
     RUN_TEST(decrementMultiplePositions);
+    RUN_TEST(randomPositionAccess);
 }
