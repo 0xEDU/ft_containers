@@ -76,28 +76,31 @@ public:
 		return tmp;
 	}
 
-	vector_iterator &operator+=(int rhs) {
-		int m = rhs;
+	vector_iterator &operator+=(difference_type rhs) {
+		difference_type m = rhs;
 
 		if (m >= 0) while (m--) ++(*this);
 		else while (m++) --(*this);
 		return *this;
 	}
 
-	vector_iterator &operator-=(int rhs) {
+	vector_iterator &operator-=(difference_type rhs) {
 		return *this += -rhs;
 	}
 
-	vector_iterator operator+(int rhs) {
+	vector_iterator operator+(difference_type rhs) {
 		vector_iterator temp = *this;
 		return temp += rhs;
 	}
 
-	vector_iterator operator-(int rhs) {
+	vector_iterator operator-(difference_type rhs) {
 		vector_iterator temp = *this;
 		return temp -= rhs;
 	}
 
+	reference operator[](difference_type n) {
+		return *(*this + n);
+	}
 // Internal variable(s)
 private:
 	pointer	_v;
