@@ -198,7 +198,7 @@ TEST_F(smallerThanOrEqual) {
 
     // then:
     assert(it1 <= it2, "it1 smaller than it2");
-    assert(it1 >= it3, "it1 equal it3");
+    assert(it1 <= it3, "it1 equal it3");
 }
 
 TEST_SUITE {
@@ -218,4 +218,5 @@ TEST_SUITE {
     RUN_TEST(greaterThan);
     RUN_TEST(smallerThan);
     RUN_TEST(greaterThanOrEqual);
+    RUN_TEST(smallerThanOrEqual);
 }
