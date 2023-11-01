@@ -1,6 +1,7 @@
 #ifndef VECTOR_ITERATOR_HPP
 #define VECTOR_ITERATOR_HPP
 
+#include <cstddef>
 #include <vector>
 #include "iterator.hpp"
 
@@ -98,8 +99,16 @@ public:
 		return temp -= rhs;
 	}
 
+	difference_type operator-(vector_iterator rhs) {
+		return this->_v - rhs._v;
+	}
+
 	reference operator[](difference_type n) {
 		return *(*this + n);
+	}
+
+	bool operator<(vector_iterator &rhs) {
+		return *this - rhs > 0;
 	}
 // Internal variable(s)
 private:

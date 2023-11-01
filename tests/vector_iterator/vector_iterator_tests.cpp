@@ -146,6 +146,27 @@ TEST_F(randomPositionAccess) {
     assert(i[3] == j, "Access a random position using []");
 }
 
+TEST_F(iteratorSubtraction) {
+    // given:
+    int i[5] = {10, 21, 32, 43, 54};
+    ft::vector_iterator<int> it1(i[0]);
+    ft::vector_iterator<int> it2(i[3]);
+    ft::vector_iterator<int>::difference_type d = it2 - it1;
+
+    // then:
+    assert(d, 3, "Difference between iterators");
+}
+
+// TEST_F(greaterThan) {
+//     // given:
+//     int i[5] = {10, 21, 32, 43, 54};
+//     ft::vector_iterator<int> it1(i[0]);
+//     ft::vector_iterator<int> it2(i[3]);
+//
+//     // then:
+//     assert(it1 < it2, "it1 greater than it2");
+// }
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -159,4 +180,6 @@ TEST_SUITE {
     RUN_TEST(incrementMultiplePositions);
     RUN_TEST(decrementMultiplePositions);
     RUN_TEST(randomPositionAccess);
+    RUN_TEST(iteratorSubtraction);
+    // RUN_TEST(greaterThan);
 }
