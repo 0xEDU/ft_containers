@@ -157,15 +157,15 @@ TEST_F(iteratorSubtraction) {
     assert(d, 3, "Difference between iterators");
 }
 
-// TEST_F(greaterThan) {
-//     // given:
-//     int i[5] = {10, 21, 32, 43, 54};
-//     ft::vector_iterator<int> it1(i[0]);
-//     ft::vector_iterator<int> it2(i[3]);
-//
-//     // then:
-//     assert(it1 < it2, "it1 greater than it2");
-// }
+TEST_F(greaterThan) {
+    // given:
+    int i[5] = {10, 21, 32, 43, 54};
+    ft::vector_iterator<int> it1(i[0]);
+    ft::vector_iterator<int> it2(i[3]);
+
+    // then:
+    assert(it1 < it2, "it1 smaller than it2");
+}
 
 TEST_SUITE {
     RUN_TEST(equivalence);
@@ -181,5 +181,5 @@ TEST_SUITE {
     RUN_TEST(decrementMultiplePositions);
     RUN_TEST(randomPositionAccess);
     RUN_TEST(iteratorSubtraction);
-    // RUN_TEST(greaterThan);
+    RUN_TEST(greaterThan);
 }
