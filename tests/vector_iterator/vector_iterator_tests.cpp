@@ -174,7 +174,7 @@ TEST_F(smallerThan) {
     ft::vector_iterator<int> it2(i[3]);
 
     // then:
-    assert(it2 > it1, "it1 smaller than it2");
+    assert(it2 > it1, "it2 greater than it1");
 }
 
 TEST_F(greaterThanOrEqual) {
@@ -182,9 +182,11 @@ TEST_F(greaterThanOrEqual) {
     int i[5] = {10, 21, 32, 43, 54};
     ft::vector_iterator<int> it1(i[0]);
     ft::vector_iterator<int> it2(i[3]);
+    ft::vector_iterator<int> it3(i[0]);
 
     // then:
-    assert(it2 >= it1, "it1 smaller than it2");
+    assert(it2 >= it1, "it2 greater than it1");
+    assert(it3 >= it1, "it3 equal it1");
 }
 
 TEST_SUITE {
