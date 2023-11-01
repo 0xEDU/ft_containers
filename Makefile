@@ -23,8 +23,9 @@ vector-run: $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
 	@rm -rf $(VECTOR_NAME)
 
-vector-iterator-run: $(VECTOR_ITERATOR_NAME)
+vector-iterator-run: fclean $(VECTOR_ITERATOR_NAME)
 	@./$(VECTOR_ITERATOR_NAME)
+	@rm -rf $(VECTOR_NAME)
 
 $(VECTOR_NAME): $(VECTOR_OBJS)
 	@c++ $(FLAGS) $(VECTOR_OBJS) -o $(VECTOR_NAME)
