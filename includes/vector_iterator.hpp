@@ -3,7 +3,9 @@
 
 #include <cstddef>
 #include <vector>
+#include <iostream>
 #include "iterator.hpp"
+#define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 
 namespace ft {
 
@@ -108,8 +110,13 @@ public:
 	}
 
 	bool operator<(vector_iterator &rhs) {
-		return *this - rhs > 0;
+		return (rhs - *this) > 0;
 	}
+
+	bool operator>(vector_iterator &rhs) {
+		return rhs < *this;
+	}
+
 // Internal variable(s)
 private:
 	pointer	_v;
