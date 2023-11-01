@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   iterator.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: edu <marvin@42.fr>                         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 00:19:09 by edu               #+#    #+#             */
-/*   Updated: 2023/07/18 19:12:01 by etachott         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef ITERATOR_HPP
 #define ITERATOR_HPP
 
@@ -17,7 +5,7 @@
 
 namespace ft {
 
-typedef int* ptrdiff_t;
+typedef long long int ptrdiff_t;
 
 // Tags
 typedef std::input_iterator_tag input_iterator_tag;
