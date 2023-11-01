@@ -5,7 +5,7 @@
 
 namespace ft {
 
-typedef int* ptrdiff_t;
+typedef long long int ptrdiff_t;
 
 // Tags
 typedef std::input_iterator_tag input_iterator_tag;
