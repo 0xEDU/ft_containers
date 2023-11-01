@@ -177,6 +177,16 @@ TEST_F(smallerThan) {
     assert(it2 > it1, "it1 smaller than it2");
 }
 
+TEST_F(greaterThanOrEqual) {
+    // given:
+    int i[5] = {10, 21, 32, 43, 54};
+    ft::vector_iterator<int> it1(i[0]);
+    ft::vector_iterator<int> it2(i[3]);
+
+    // then:
+    assert(it2 >= it1, "it1 smaller than it2");
+}
+
 TEST_SUITE {
     RUN_TEST(equivalence);
     RUN_TEST(difference);
@@ -193,4 +203,5 @@ TEST_SUITE {
     RUN_TEST(iteratorSubtraction);
     RUN_TEST(greaterThan);
     RUN_TEST(smallerThan);
+    RUN_TEST(greaterThanOrEqual);
 }
