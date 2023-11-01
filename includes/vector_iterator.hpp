@@ -121,6 +121,10 @@ public:
 		return !(*this < rhs);
 	}
 
+	bool operator<=(vector_iterator &rhs) {
+		return !(*this > rhs);
+	}
+
 // Internal variable(s)
 private:
 	pointer	_v;
