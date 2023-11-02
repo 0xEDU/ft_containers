@@ -15,7 +15,7 @@ TEST_F(vectorInstantiation) {
   assert(v.size() == 0, "Vector has no size");
 }
 
-TEST_F(vectorInstantiation) {
+TEST_F(vectorInstantiationWithSize) {
   ft::vector<int> v(5);
 
   assert(v.empty() == true, "Vector is empty");
@@ -24,5 +24,6 @@ TEST_F(vectorInstantiation) {
 
 TEST_SUITE {
     RUN_TEST(vectorInstantiation);
+    RUN_TEST(vectorInstantiationWithSize);
     // RUN_TEST(vectorBegin);
 }
