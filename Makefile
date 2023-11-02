@@ -1,13 +1,13 @@
-VECTOR_NAME = vectors
+VECTOR_NAME = vector
 VECTOR_ITERATOR_NAME = vector_iterator
 
-PATH_VECTOR = ./sources/vector/
+PATH_VECTOR = ./tests/
 PATH_VECTOR_ITERATOR = ./tests/vector_iterator/
 PATH_CONTAINERS = ./includes/
 PATH_TESTS = ./tests/
 PATH_OBJS = ./objects/
 
-VECTOR_TESTS =	main_vectors.cpp
+VECTOR_TESTS =	vector_tests.cpp
 VECTOR_OBJS = $(patsubst %.cpp,$(PATH_OBJS)%.o,$(VECTOR_TESTS))
 
 VECTOR_ITERATOR_TESTS =	vector_iterator_tests.cpp
@@ -19,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 
-vector-run: $(VECTOR_NAME)
+vector-run: fclean $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
 	@rm -rf $(VECTOR_NAME)
 
