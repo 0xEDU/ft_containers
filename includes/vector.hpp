@@ -22,17 +22,23 @@ public:
   // const_reverse_iterator
 
 public:
-  vector() : _ptr(NULL), _allocator(), _size(0) {
-    // this->ptr = this->allocator.allocate(this->vector_size);
+  vector() : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL) {};
+  vector(size_type size) : _ptr(NULL), _allocator(), _size(size), _begin(NULL), _end(NULL) {
+    this->_ptr = this->_allocator.allocate(size);
+    this->_begin = this->_ptr;
+    this->_end = this->_ptr;
   };
-  ~vector() { /* this->allocator.deallocate(this->ptr, this->vector_size); */ };
+  ~vector() {
+    if (this->_ptr != NULL)
+      this->_allocator.deallocate(this->_ptr, this->_size);
+  };
 
   size_t size() {
     return this->_size;
   }
 
   bool empty() {
-    return this->_size == 0;
+    return this->_begin == this->_end;
   }
 
   // iterator begin() {
@@ -42,7 +48,9 @@ public:
 private:
   pointer _ptr;
   allocator_type _allocator;
-  size_t _size;
+  size_type _size;
+  pointer _begin;
+  pointer _end;
 };
 
 } // namespace ft
