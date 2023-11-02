@@ -12,7 +12,14 @@ TEST_F(vectorInstantiation) {
   ft::vector<int> v;
 
   assert(v.empty() == true, "Vector is empty");
-  assert(v.size() == 0, "Vector has no elements");
+  assert(v.size() == 0, "Vector has no size");
+}
+
+TEST_F(vectorInstantiation) {
+  ft::vector<int> v(5);
+
+  assert(v.empty() == true, "Vector is empty");
+  assert(v.size() == 5, "Vector has size 5");
 }
 
 TEST_SUITE {
