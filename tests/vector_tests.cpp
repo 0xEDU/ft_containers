@@ -1,6 +1,7 @@
 #include "vector.hpp"
 #include "test_utils.hpp"
 #include <cstddef>
+#include <memory>
 #define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 // TEST_F(vectorBegin) {
 //   ft::vector<int> v;
@@ -33,12 +34,22 @@ TEST_F(vectorInstantiationWithCustomAllocator) {
   assert(v.size() == 0, "Vector has no size");
 }
 
-TEST_F(vectorInstantiationWithSizeAndValueAndCustomAllocator) {
-  ft::vector<int> v1(1, 42);
-  ft::vector<int>::iterator it = v1.begin();
+TEST_F(vectorInstantiationWithSizeAndValue) {
+  ft::vector<int> v(1, 42);
+  ft::vector<int>::iterator it = v.begin();
 
-  assert(v1.empty() == false, "Vector is not empty");
-  assert(v1.size() == 1, "Vector has no size");
+  assert(v.empty() == false, "Vector is not empty");
+  assert(v.size() == 1, "Vector has no size");
+  assert(*it == 42, "Vector is filled with the right value");
+}
+
+TEST_F(vectorInstantiationWithSizeAndValueAndCustomAllocator) {
+  std::allocator<int> alloc;
+  ft::vector<int> v(1, 42, alloc);
+  ft::vector<int>::iterator it = v.begin();
+
+  assert(v.empty() == false, "Vector is not empty");
+  assert(v.size() == 1, "Vector has no size");
   assert(*it == 42, "Vector is filled with the right value");
 }
 
