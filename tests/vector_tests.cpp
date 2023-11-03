@@ -53,6 +53,16 @@ TEST_F(vectorInstantiationWithSizeAndValueAndCustomAllocator) {
   assert(*it == 42, "Vector is filled with the right value");
 }
 
+TEST_F(vectorInstantiationIterators) {
+  ft::vector<int> v1(1, 42);
+  ft::vector<int> v2(v1.begin(), v2.end());
+  ft::vector<int>::iterator it = v2.begin();
+
+  assert(v2.empty() == false, "Vector is not empty");
+  assert(v2.size() == 1, "Vector has no size");
+  assert(*it == 42, "Vector is filled with the right value");
+}
+
 TEST_SUITE {
   RUN_TEST(vectorInstantiation);
   RUN_TEST(vectorInstantiationWithSize);
