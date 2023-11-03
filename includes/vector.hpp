@@ -1,6 +1,8 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
+#define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
+
 #include "vector_iterator.hpp"
 #include <string>
 #include <sys/types.h>
@@ -16,7 +18,7 @@ public:
   typedef const value_type &const_reference;
   typedef typename Allocator::pointer pointer;
   typedef const typename Allocator::const_pointer const_pointer;
-  typedef vector_iterator<T *> iterator;
+  typedef vector_iterator<value_type> iterator;
   // typedef vector_iterator<const T *> const_iterator;
   // reverse_iterator
   // const_reverse_iterator
@@ -25,11 +27,16 @@ public:
   // Constructors
   vector() : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL){};
 
-  explicit vector(size_type size)
-      : _ptr(NULL), _allocator(), _size(size), _begin(NULL), _end(NULL) {
+  explicit vector(size_type size, const_reference value = value_type(), const Allocator &alloc = Allocator())
+      : _ptr(NULL), _allocator(alloc), _size(size), _begin(NULL), _end(NULL) {
     this->_ptr = this->_allocator.allocate(size);
     this->_begin = this->_ptr;
-    this->_end = this->_ptr;
+    this->_end = this->_ptr + size;
+    while (this->_ptr != this->_end) {
+      *this->_ptr = value;
+      this->_ptr++;
+    }
+    this->_ptr = this->_begin;
   };
 
   explicit vector(const Allocator &alloc)
@@ -47,9 +54,13 @@ public:
   bool empty() { return this->_begin == this->_end; }
 
   // Iterators
-  // iterator begin() {
-  //   return typename ft::vector<T>::iterator(_ptr);
-  // };
+  iterator begin() {
+    return iterator(*this->_begin);
+  };
+
+  iterator end() {
+    return iterator(*this->_end);
+  };
 
 private:
   pointer _ptr;
