@@ -42,7 +42,20 @@ public:
   explicit vector(const Allocator &alloc)
       : _ptr(NULL), _allocator(alloc), _size(0), _begin(NULL), _end(NULL) {}
 
-  // Destructors
+  explicit vector(iterator first, iterator last, const Allocator &alloc = Allocator())
+      : _ptr(NULL), _allocator(alloc), _size(last - first), _begin(NULL), _end(NULL) {
+    size_type size = last - first;
+    this->_ptr = this->_allocator.allocate(size);
+    this->_begin = this->_ptr;
+    this->_end = this->_ptr + size;
+    while (first != last) {
+      *this->_ptr = *first++;
+      this->_ptr++;
+    }
+    this->_ptr = this->_begin;
+  };
+
+  // Destructor
   ~vector() {
     if (this->_ptr != NULL)
       this->_allocator.deallocate(this->_ptr, this->_size);
