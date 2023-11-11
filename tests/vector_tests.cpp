@@ -65,10 +65,23 @@ TEST_F(vectorInstantiationIterators) {
   assert(*it == 42, "Vector is filled with 42 at 2");
 }
 
+TEST_F(vectorCopyConstructor) {
+  ft::vector<int> v1(3, 42);
+  ft::vector<int> v2(v1);
+  ft::vector<int>::iterator it = v2.begin();
+
+  assert(v2.empty() == false, "Vector is not empty");
+  assert(v2.size() == 3, "Vector has size 3");
+  assert(*it++ == 42, "Vector is filled with 42 at 0");
+  assert(*it++ == 42, "Vector is filled with 42 at 1");
+  assert(*it == 42, "Vector is filled with 42 at 2");
+}
+
 TEST_SUITE {
   RUN_TEST(vectorInstantiation);
   RUN_TEST(vectorInstantiationWithSize);
   RUN_TEST(vectorInstantiationWithCustomAllocator);
   RUN_TEST(vectorInstantiationWithSizeAndValueAndCustomAllocator);
   RUN_TEST(vectorInstantiationIterators);
+  RUN_TEST(vectorCopyConstructor);
 }
