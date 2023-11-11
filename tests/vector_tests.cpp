@@ -39,7 +39,7 @@ TEST_F(vectorInstantiationWithSizeAndValue) {
   ft::vector<int>::iterator it = v.begin();
 
   assert(v.empty() == false, "Vector is not empty");
-  assert(v.size() == 1, "Vector has no size");
+  assert(v.size() == 1, "Vector has size 1");
   assert(*it == 42, "Vector is filled with the right value");
 }
 
@@ -49,18 +49,20 @@ TEST_F(vectorInstantiationWithSizeAndValueAndCustomAllocator) {
   ft::vector<int>::iterator it = v.begin();
 
   assert(v.empty() == false, "Vector is not empty");
-  assert(v.size() == 1, "Vector has no size");
+  assert(v.size() == 1, "Vector has size 1");
   assert(*it == 42, "Vector is filled with the right value");
 }
 
 TEST_F(vectorInstantiationIterators) {
-  ft::vector<int> v1(1, 42);
-  ft::vector<int> v2(v1.begin(), v2.end());
+  ft::vector<int> v1(3, 42);
+  ft::vector<int> v2(v1.begin(), v1.end());
   ft::vector<int>::iterator it = v2.begin();
 
   assert(v2.empty() == false, "Vector is not empty");
-  assert(v2.size() == 1, "Vector has no size");
-  assert(*it == 42, "Vector is filled with the right value");
+  assert(v2.size() == 3, "Vector has size 3");
+  assert(*it++ == 42, "Vector is filled with 42 at 0");
+  assert(*it++ == 42, "Vector is filled with 42 at 1");
+  assert(*it == 42, "Vector is filled with 42 at 2");
 }
 
 TEST_SUITE {
@@ -68,5 +70,5 @@ TEST_SUITE {
   RUN_TEST(vectorInstantiationWithSize);
   RUN_TEST(vectorInstantiationWithCustomAllocator);
   RUN_TEST(vectorInstantiationWithSizeAndValueAndCustomAllocator);
-  // RUN_TEST(vectorBegin);
+  RUN_TEST(vectorInstantiationIterators);
 }
