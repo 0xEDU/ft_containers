@@ -91,6 +91,29 @@ TEST_F(vectorCopyConstructor) {
   assert(*it == 42, "Vector is filled with 42 at 2");
 }
 
+TEST_F(vectorAssignWithSizeAndValue) {
+  // given
+  ft::vector<char> v;
+  v.assign(1, 'a');
+  ft::vector<char>::iterator it = v.begin();
+
+  // then
+  assert(v.empty() == false, "Vector is not empty");
+  assert(v.size() == 1, "Vector has size 1");
+  assert(*it == 'a', "Vector is filled with the right value");
+
+  // when
+  v.assign(3, 'b');
+  it = v.begin();
+
+  // then
+  assert(v.empty() == false, "Vector is not empty");
+  assert(v.size() == 3, "Vector has size 1");
+  assert(*it++ == 'b', "Vector is filled with the right value at 0");
+  assert(*it++ == 'b', "Vector is filled with the right value at 1");
+  assert(*it == 'b', "Vector is filled with the right value at 2");
+}
+
 TEST_SUITE {
   RUN_TEST(vectorInstantiation);
   RUN_TEST(vectorInstantiationWithSize);
@@ -98,4 +121,5 @@ TEST_SUITE {
   RUN_TEST(vectorInstantiationWithSizeAndValueAndCustomAllocator);
   RUN_TEST(vectorInstantiationIterators);
   RUN_TEST(vectorCopyConstructor);
+  RUN_TEST(vectorAssignWithSizeAndValue);
 }
