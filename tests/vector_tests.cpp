@@ -10,16 +10,20 @@
 // }
 
 TEST_F(vectorInstantiation) {
+  // given
   ft::vector<int> v;
 
+  // then
   assert(v.empty() == true, "Vector is empty");
   assert(v.size() == 0, "Vector has no size");
 }
 
 TEST_F(vectorInstantiationWithSize) {
+  // given
   ft::vector<int> v1(5);
   ft::vector<int>::iterator it = v1.begin();
 
+  // then
   assert(v1.empty() == false, "Vector is not empty");
   assert(v1.size() == 5, "Vector has size 5");
   assert(*it++ == 0, "Vector is filled with 0 at begin");
@@ -27,37 +31,45 @@ TEST_F(vectorInstantiationWithSize) {
 }
 
 TEST_F(vectorInstantiationWithCustomAllocator) {
+  // given
   std::allocator<int> alloc;
   ft::vector<int> v(alloc);
 
+  // then
   assert(v.empty() == true, "Vector is empty");
   assert(v.size() == 0, "Vector has no size");
 }
 
 TEST_F(vectorInstantiationWithSizeAndValue) {
+  // given
   ft::vector<int> v(1, 42);
   ft::vector<int>::iterator it = v.begin();
 
+  // then
   assert(v.empty() == false, "Vector is not empty");
   assert(v.size() == 1, "Vector has size 1");
   assert(*it == 42, "Vector is filled with the right value");
 }
 
 TEST_F(vectorInstantiationWithSizeAndValueAndCustomAllocator) {
+  // given
   std::allocator<int> alloc;
   ft::vector<int> v(1, 42, alloc);
   ft::vector<int>::iterator it = v.begin();
 
+  // then
   assert(v.empty() == false, "Vector is not empty");
   assert(v.size() == 1, "Vector has size 1");
   assert(*it == 42, "Vector is filled with the right value");
 }
 
 TEST_F(vectorInstantiationIterators) {
+  // given
   ft::vector<int> v1(3, 42);
   ft::vector<int> v2(v1.begin(), v1.end());
   ft::vector<int>::iterator it = v2.begin();
 
+  // then
   assert(v2.empty() == false, "Vector is not empty");
   assert(v2.size() == 3, "Vector has size 3");
   assert(*it++ == 42, "Vector is filled with 42 at 0");
@@ -66,10 +78,12 @@ TEST_F(vectorInstantiationIterators) {
 }
 
 TEST_F(vectorCopyConstructor) {
+  // given
   ft::vector<int> v1(3, 42);
   ft::vector<int> v2(v1);
   ft::vector<int>::iterator it = v2.begin();
 
+  // then
   assert(v2.empty() == false, "Vector is not empty");
   assert(v2.size() == 3, "Vector has size 3");
   assert(*it++ == 42, "Vector is filled with 42 at 0");
