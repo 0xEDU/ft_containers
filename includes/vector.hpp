@@ -4,7 +4,6 @@
 #define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 
 #include "vector_iterator.hpp"
-#include <string>
 #include <sys/types.h>
 
 namespace ft {
@@ -41,6 +40,17 @@ public:
 
   explicit vector(const Allocator &alloc)
       : _ptr(NULL), _allocator(alloc), _size(0), _begin(NULL), _end(NULL) {}
+
+  explicit vector(iterator first, iterator last, const Allocator &alloc = Allocator())
+    : _ptr(NULL), _allocator(alloc), _size(last - first), _begin(NULL), _end(NULL) {
+    this->_ptr = this->_allocator.allocate(this->_size);
+    this->_begin = this->_ptr;
+    this->_end = this->_ptr + this->_size;
+    for (; first != last; first++) {
+      *this->_ptr++ = *first;
+    }
+    this->_ptr = this->_begin;
+  }
 
   // Destructors
   ~vector() {
