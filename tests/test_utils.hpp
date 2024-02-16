@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#define RED "\033[1;32m"
-#define GRN "\033[1;31m"
+#define RED "\033[1;31m"
+#define GRN "\033[1;32m"
 #define END "\033[0m"
 
 #define LOG(x) std::cout << x << std::endl;

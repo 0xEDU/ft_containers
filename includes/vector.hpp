@@ -53,6 +53,28 @@ public:
   }
 
   // Destructors
+  explicit vector(const vector &rhs)
+      : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL) {
+    *this = rhs;
+  }
+
+  vector &operator=(const vector &other) {
+    if (this != &other) {
+      this->_size = other._size;
+      this->_allocator = other._allocator;
+      this->_ptr = this->_allocator.allocate(this->_size);
+      this->_begin = this->_ptr;
+      this->_end = this->_ptr + this->_size;
+      for (size_type i = 0; i < this->_size; i++) {
+        *this->_ptr = other._ptr[i];
+        this->_ptr++;
+      }
+      this->_ptr = this->_begin;
+    }
+    return *this;
+  }
+
+  // Destructor
   ~vector() {
     if (this->_ptr != NULL)
       this->_allocator.deallocate(this->_ptr, this->_size);
