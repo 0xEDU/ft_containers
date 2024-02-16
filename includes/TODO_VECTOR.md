@@ -22,13 +22,13 @@
 
 # Member types
 
-value_type	T
-allocator_type	Allocator
-size_type	Unsigned integer type (usually std::size_t)
-difference_type	Signed integer type (usually std::ptrdiff_t)
-reference	value_type&
-const_reference	const value_type&
-pointer	 Allocator::pointer
-const_pointer	 Allocator::const_pointer
+* value_type	T
+* allocator_type	Allocator
+* size_type	Unsigned integer type (usually std::size_t)
+* difference_type	Signed integer type (usually std::ptrdiff_t)
+* reference	value_type&
+* const_reference	const value_type&
+* pointer	 Allocator::pointer
+* const_pointer	 Allocator::const_pointer
 
 [...]

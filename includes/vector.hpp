@@ -52,7 +52,6 @@ public:
     this->_ptr = this->_begin;
   }
 
-  // Destructors
   explicit vector(const vector &rhs)
       : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL) {
     *this = rhs;
