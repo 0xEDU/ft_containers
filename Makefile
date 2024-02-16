@@ -23,6 +23,10 @@ vector-run: fclean $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
 	@rm -rf $(VECTOR_NAME)
 
+vvector-run: fclean $(VECTOR_NAME)
+	@valgrind ./$(VECTOR_NAME)
+	@rm -rf $(VECTOR_NAME)
+
 vector-iterator-run: fclean $(VECTOR_ITERATOR_NAME)
 	@./$(VECTOR_ITERATOR_NAME)
 	@rm -rf $(VECTOR_NAME)
