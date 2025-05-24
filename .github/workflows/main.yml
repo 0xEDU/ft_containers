@@ -1,4 +1,4 @@
-name: cpp-linter
+name: cpp-formatting
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: './.clang-format'
-          tidy-checks: 'bugprone-*,performance-*,readability-*,portability-*,clang-analyzer-*,cppcoreguidelines-*'
+          tidy-checks: '-*'
           version: '12'
           files-changed-only: false
           thread-comments: false
@@ -28,6 +28,6 @@ jobs:
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed != 0
         run: |
-          echo "some linter checks failed. ${{ steps.linter.outputs.checks-failed }}"
+          echo "some formatting checks failed. ${{ steps.linter.outputs.checks-failed }}"
         # for actual deployment
         # run: exit 1
