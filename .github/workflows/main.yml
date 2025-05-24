@@ -70,6 +70,7 @@ jobs:
           overall_exit_code=0 # Track if any valgrind check fails
 
           for exe_path in ./downloaded-binaries/*; do
+            chmod +x "$exe_path" # Ensure the file is executable
             if [ -f "$exe_path" ]; then
               exe_name=$(basename "$exe_path")
               echo "----------------------------------------------------"
