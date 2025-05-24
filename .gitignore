@@ -2,5 +2,4 @@
 compile_commands.json
 objects/
 POCs/
-vector
-vector_iterator
+bin/
