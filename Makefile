@@ -1,11 +1,11 @@
 VECTOR_NAME = vector
 VECTOR_ITERATOR_NAME = vector_iterator
 
-PATH_VECTOR = ./tests/
-PATH_VECTOR_ITERATOR = ./tests/vector_iterator/
+PATH_VECTOR_TESTS = ./tests/vector/
 PATH_CONTAINERS = ./includes/
 PATH_TESTS = ./tests/
 PATH_OBJS = ./objects/
+PATH_BINARY = ./bin/
 
 VECTOR_TESTS =	vector_tests.cpp
 VECTOR_OBJS = $(patsubst %.cpp,$(PATH_OBJS)%.o,$(VECTOR_TESTS))
@@ -15,7 +15,7 @@ VECTOR_ITERATOR_OBJS = $(patsubst %.cpp,$(PATH_OBJS)%.o,$(VECTOR_ITERATOR_TESTS)
 
 INCLUDE_CONTAINERS = -I $(PATH_CONTAINERS)
 INCLUDE_TESTS = -I $(PATH_TESTS)
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 
@@ -23,32 +23,39 @@ vector-run: fclean $(VECTOR_NAME)
 	@./$(VECTOR_NAME)
 	@rm -rf $(VECTOR_NAME)
 
+vvector-run: fclean $(VECTOR_NAME)
+	@valgrind ./$(VECTOR_NAME)
+	@rm -rf $(VECTOR_NAME)
+
 vector-iterator-run: fclean $(VECTOR_ITERATOR_NAME)
 	@./$(VECTOR_ITERATOR_NAME)
 	@rm -rf $(VECTOR_NAME)
 
 $(VECTOR_NAME): $(VECTOR_OBJS)
-	@c++ $(FLAGS) $(VECTOR_OBJS) -o $(VECTOR_NAME)
-
-$(PATH_OBJS)%.o: $(PATH_VECTOR)%.cpp
-	@mkdir -p $(PATH_OBJS)
-	@c++ $(FLAGS) $(INCLUDE_CONTAINERS) $(INCLUDE_TESTS) -c $< -o $@
-	@echo "\033[1;92m[SUCCESS] Vector test objects creation done!\033[0m"
+	@if [ ! -d $(PATH_BINARY) ]; then \
+		mkdir -p $(PATH_BINARY); \
+	fi
+	@c++ $(CXXFLAGS) $(VECTOR_OBJS) -o $(PATH_BINARY)$(VECTOR_NAME)
+	@echo "\033[1;92m[SUCCESS] Compiled and linked $(VECTOR_NAME)\33[0m"
 
 $(VECTOR_ITERATOR_NAME): $(VECTOR_ITERATOR_OBJS)
-	@c++ $(FLAGS) $(VECTOR_ITERATOR_OBJS) -o $(VECTOR_ITERATOR_NAME)
+	@if [ ! -d $(PATH_BINARY) ]; then \
+		mkdir -p $(PATH_BINARY); \
+	fi
+	@c++ $(CXXFLAGS) $(VECTOR_ITERATOR_OBJS) -o $(PATH_BINARY)$(VECTOR_ITERATOR_NAME)
+	@echo "\033[1;92m[SUCCESS] Compiled and linked $(VECTOR_ITERATOR_NAME)\33[0m"
 
-$(PATH_OBJS)%.o: $(PATH_VECTOR_ITERATOR)%.cpp
+$(PATH_OBJS)%.o: $(PATH_VECTOR_TESTS)%.cpp
 	@mkdir -p $(PATH_OBJS)
-	@c++ $(FLAGS) $(INCLUDE_CONTAINERS) $(INCLUDE_TESTS) -c $< -o $@
-	@echo "\033[1;92m[SUCCESS] Vector iterator test objects creation done!\033[0m"
+	@c++ $(CXXFLAGS) $(INCLUDE_CONTAINERS) $(INCLUDE_TESTS) -c $< -o $@
+	@echo "\033[1;92m[SUCCESS] Compiled $<\33[0m"
 
 clean:
 	@rm -rf $(PATH_OBJS)
 	@echo "\33[1;93m[SUCCESS] Objects removed!\33[0m"
 
 fclean: clean
-	@rm -f $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
+	@rm -rf $(PATH_BINARY)
 	@echo "\033[1;93m[SUCCESS] Full clean done!\33[0m"
 
 re: fclean all
