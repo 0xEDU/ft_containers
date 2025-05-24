@@ -1,14 +1,15 @@
-name: cpp-formatting
+name: cpp-checks
 
 on:
   push:
     branches: [ "*" ]
     paths:
       - "includes/*"
-
+      - "tests/*"
+      - "Makefile"
 
 jobs:
-  cpp-linter:
+  cpp-formatting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,9 +26,54 @@ jobs:
           thread-comments: false
           step-summary: true
 
-      - name: Fail fast?!
+      - name: Check formatting
         if: steps.linter.outputs.checks-failed != 0
         run: |
-          echo "some formatting checks failed. ${{ steps.linter.outputs.checks-failed }}"
-        # for actual deployment
-        # run: exit 1
+          echo "some formatting checks failed. ${{ steps.linter.outputs.checks-failed }}" && exit 1
+  build-tests:
+    runs-on: ubuntu-latest
+    needs: cpp-formatting # Optional: make this job depend on formatting
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make
+        run: |
+          make || exit 1
+      - name: Upload Binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-binaries
+          path: ./bin/
+          retention-days: 1
+
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: build-tests
+    steps:
+      - name: Download Binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: test-binaries # Must match the upload name
+          path: ./downloaded-binaries # Destination path for downloaded artifacts
+
+      - name: List Downloaded Files # For debugging
+        run: ls -R ./downloaded-binaries
+
+      - name: Run Executables
+        run: |
+          echo "Running binaries from ./downloaded-binaries/"
+          for exe in ./downloaded-binaries/*; do
+            if [ -f "$exe" ] && [ -x "$exe" ]; then
+              echo "Running $exe"
+              "$exe" # Execute the binary
+              exit_code=$?
+              if [ $exit_code -ne 0 ]; then
+                echo "Error: $exe exited with code $exit_code"
+                exit $exit_code # Exit the script with the failing code
+              else
+                echo "$exe ran successfully."
+              fi
+            else
+              echo "Skipping $exe (not an executable file)"
+            fi
+          done
+          echo "All binaries ran successfully."
