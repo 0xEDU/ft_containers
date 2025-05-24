@@ -15,7 +15,7 @@ VECTOR_ITERATOR_OBJS = $(patsubst %.cpp,$(PATH_OBJS)%.o,$(VECTOR_ITERATOR_TESTS)
 
 INCLUDE_CONTAINERS = -I $(PATH_CONTAINERS)
 INCLUDE_TESTS = -I $(PATH_TESTS)
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 
