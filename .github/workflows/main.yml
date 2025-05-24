@@ -70,7 +70,7 @@ jobs:
           overall_exit_code=0 # Track if any valgrind check fails
 
           for exe_path in ./downloaded-binaries/*; do
-            if [ -f "$exe_path" ] && [ -x "$exe_path" ]; then
+            if [ -f "$exe_path" ]; then
               exe_name=$(basename "$exe_path")
               echo "----------------------------------------------------"
               echo "Running Valgrind on $exe_name"
