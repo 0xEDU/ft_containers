@@ -19,18 +19,6 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(VECTOR_NAME) $(VECTOR_ITERATOR_NAME)
 
-vector-run: fclean $(VECTOR_NAME)
-	@./$(VECTOR_NAME)
-	@rm -rf $(VECTOR_NAME)
-
-vvector-run: fclean $(VECTOR_NAME)
-	@valgrind ./$(VECTOR_NAME)
-	@rm -rf $(VECTOR_NAME)
-
-vector-iterator-run: fclean $(VECTOR_ITERATOR_NAME)
-	@./$(VECTOR_ITERATOR_NAME)
-	@rm -rf $(VECTOR_NAME)
-
 $(VECTOR_NAME): $(VECTOR_OBJS)
 	@if [ ! -d $(PATH_BINARY) ]; then \
 		mkdir -p $(PATH_BINARY); \
