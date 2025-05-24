@@ -1,6 +1,7 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
+#include <cstddef>
 #define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 
 #include "vector_iterator.hpp"
@@ -78,6 +79,12 @@ public:
     if (this->_ptr != NULL)
       this->_allocator.deallocate(this->_ptr, this->_size);
   };
+
+  // Member functions
+  void assign(size_type count, const T&value) {
+    (void)count;
+    (void)value;
+  }
 
   // Capacity
   size_t size() { return this->_size; }
