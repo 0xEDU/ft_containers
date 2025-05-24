@@ -2,14 +2,16 @@
 #define VECTOR_HPP
 
 #include <cstddef>
-#define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
+#include <sys/types.h>
 
 #include "vector_iterator.hpp"
-#include <sys/types.h>
+
+#define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 
 namespace ft {
 
-template <typename T, class Allocator = std::allocator<T> > class vector {
+template <typename T, class Allocator = std::allocator<T> >
+class vector {
 public:
   typedef T value_type;
   typedef Allocator allocator_type;
@@ -25,9 +27,12 @@ public:
 
 public:
   // Constructors
-  vector() : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL){};
+  vector() : _ptr(NULL), _allocator(), _size(0), _begin(NULL), _end(NULL) {};
 
-  explicit vector(size_type size, const_reference value = value_type(), const Allocator &alloc = Allocator())
+  explicit vector(
+      size_type size, const_reference value = value_type(),
+      const Allocator &alloc = Allocator()
+  )
       : _ptr(NULL), _allocator(alloc), _size(size), _begin(NULL), _end(NULL) {
     this->_ptr = this->_allocator.allocate(size);
     this->_begin = this->_ptr;
@@ -42,8 +47,11 @@ public:
   explicit vector(const Allocator &alloc)
       : _ptr(NULL), _allocator(alloc), _size(0), _begin(NULL), _end(NULL) {}
 
-  explicit vector(iterator first, iterator last, const Allocator &alloc = Allocator())
-    : _ptr(NULL), _allocator(alloc), _size(last - first), _begin(NULL), _end(NULL) {
+  explicit vector(
+      iterator first, iterator last, const Allocator &alloc = Allocator()
+  )
+      : _ptr(NULL), _allocator(alloc), _size(last - first), _begin(NULL),
+        _end(NULL) {
     this->_ptr = this->_allocator.allocate(this->_size);
     this->_begin = this->_ptr;
     this->_end = this->_ptr + this->_size;
@@ -81,7 +89,7 @@ public:
   };
 
   // Member functions
-  void assign(size_type count, const T&value) {
+  void assign(size_type count, const T &value) {
     (void)count;
     (void)value;
   }
@@ -92,13 +100,9 @@ public:
   bool empty() { return this->_begin == this->_end; }
 
   // Iterators
-  iterator begin() {
-    return iterator(*this->_begin);
-  };
+  iterator begin() { return iterator(*this->_begin); };
 
-  iterator end() {
-    return iterator(*this->_end);
-  };
+  iterator end() { return iterator(*this->_end); };
 
 private:
   pointer _ptr;

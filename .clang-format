@@ -1,1 +1,11 @@
 BasedOnStyle: LLVM
+Standard: Cpp03
+
+IndentWidth: 2
+UseTab: Never
+ColumnLimit: 80
+SpacesInParentheses: false
+SpacesBeforeTrailingComments: 1
+Cpp11BracedListStyle: false
+AlignAfterOpenBracket: BlockIndent
+BreakTemplateDeclarations: Yes

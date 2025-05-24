@@ -1,5 +1,5 @@
-#include "vector.hpp"
 #include "test_utils.hpp"
+#include "vector.hpp"
 #include <cstddef>
 #include <memory>
 #define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;

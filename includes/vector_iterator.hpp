@@ -1,10 +1,12 @@
 #ifndef VECTOR_ITERATOR_HPP
 #define VECTOR_ITERATOR_HPP
 
-#include "iterator.hpp"
 #include <cstddef>
 #include <iostream>
 #include <vector>
+
+#include "iterator.hpp"
+
 #define DEBUG(x) std::cout << "[DEBUG] " << x << std::endl;
 
 namespace ft {
@@ -24,18 +26,22 @@ public:
 
   // Canonical form
 public:
-  vector_iterator() : _v(){};
-  explicit vector_iterator(value_type &value) : _v(&value){};
+  vector_iterator() : _v() {};
+
+  explicit vector_iterator(value_type &value) : _v(&value) {};
+
   vector_iterator(const vector_iterator &rhs) {
     if (this != &rhs)
       *this = rhs;
   };
+
   vector_iterator &operator=(const vector_iterator &rhs) {
     if (this != &rhs)
       this->_v = rhs.base();
     return *this;
   };
-  ~vector_iterator(){};
+
+  ~vector_iterator() {};
 
   // Accessor
   pointer base() const { return this->_v; };
