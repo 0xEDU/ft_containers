@@ -2,9 +2,8 @@ name: cpp-linter
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "*" ]
     paths:
-      - "sources/*"
       - "includes/*"
 
 
@@ -19,9 +18,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          style: 'llvm'
-          tidy-checks: 'bugprone-*,performance-*,readability-*,portability-*,modernize-*,clang-analyzer-*,cppcoreguidelines-*'
-          version: '19'
+          style: './.clang-format'
+          tidy-checks: 'bugprone-*,performance-*,readability-*,portability-*,clang-analyzer-*,cppcoreguidelines-*'
+          version: '12'
           files-changed-only: false
           thread-comments: false
           step-summary: true
